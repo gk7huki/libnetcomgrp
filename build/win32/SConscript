@@ -1,0 +1,12 @@
+# import these variables from the parent build script
+Import('env', 'exe_env', 'target_name', 'target_dir')
+
+env.Append(CPPFLAGS = "-mthreads")
+
+exe_env.Append(LIBPATH=target_dir)
+exe_env.Append(LIBS=target_name)
+exe_env.Append(CPPFLAGS = "-mthreads")
+exe_env.Append(
+    LIBS=['ws2_32',
+          # KadC requires these
+          'pthreadGC','z'])
